@@ -28,8 +28,8 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        nome_cli = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        nome_cli = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         descricao_cli = new javax.swing.JTextField();
         precodevenda_cli = new javax.swing.JTextField();
@@ -47,12 +47,12 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Bitstream Charter", 3, 24)); // NOI18N
         jLabel1.setText("Produto");
 
-        nome_cli.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        nome_cli.setText("Nome:");
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel2.setText("Nome:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nome_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nome_cliActionPerformed(evt);
             }
         });
 
@@ -114,9 +114,9 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(nome_cli)
+                            .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField1))
+                            .addComponent(nome_cli))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jLabel3)
@@ -159,8 +159,8 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome_cli)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(nome_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -190,9 +190,9 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nome_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nome_cliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nome_cliActionPerformed
 
     private void descricao_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricao_cliActionPerformed
         // TODO add your handling code here:
@@ -226,12 +226,12 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
     private javax.swing.JTextField datadocadastro_cli;
     private javax.swing.JTextField descricao_cli;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel nome_cli;
+    private javax.swing.JTextField nome_cli;
     private javax.swing.JTextField precodevenda_cli;
     private javax.swing.JTextField quantidadeemestoque_cli;
     // End of variables declaration//GEN-END:variables
