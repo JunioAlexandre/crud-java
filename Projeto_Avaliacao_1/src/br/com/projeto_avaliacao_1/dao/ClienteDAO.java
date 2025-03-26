@@ -76,7 +76,31 @@ public class ClienteDAO {
             }
     }
     
-    
+    public boolean alterarCliente(ClienteDTO clienteDTO) throws SQLException{
+        try{
+            ConexaoDAO.ConnectDB();
+            
+            stmt = ConexaoDAO.con.createStatement();
+            
+            String comando = "Update cliente set "
+                    + "nome_cli = '" + clienteDTO.getNome_cli()+ "', "
+                    + "descricao_cli = '" + clienteDTO.getDescricao_cli()+ "', "
+                    + "precodevenda_cli = '" + clienteDTO.getPrecodevenda_cli()+ "', "
+                    + "quantidadeemestoque_cli = '" + clienteDTO.getQuantidadeemestoque_cli()+ "', "
+                    + "datadocadastro_cli = '" + clienteDTO.getDatadocadastro_cli();
+            
+            stmt.execute(comando.toUpperCase());
+            
+            ConexaoDAO.con.commit();
+            
+            stmt.close();
+            return true;     
+        }
+        catch (Exception e){
+            System.out.println(e.getMessahe()); //Arrumar isso aqui... dar continuidade...
+            
+        }
+    }
     
     public boolean inserirProduto(ClienteDTO clienteDTO) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

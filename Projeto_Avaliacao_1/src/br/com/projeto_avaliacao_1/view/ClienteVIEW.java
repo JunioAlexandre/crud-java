@@ -139,6 +139,11 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         });
 
         btnPesquisar.setText("OK");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         jtl_consultar_produto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,6 +159,11 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jtl_consultar_produto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtl_consultar_produtoMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jtl_consultar_produto);
@@ -313,6 +323,17 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pesquisa_nome_cliActionPerformed
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        preencheTabela(pesquisa_nome_cli.getText());
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void jtl_consultar_produtoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtl_consultar_produtoMouseClicked
+        preencheCampos(Integer.parseInt(String.valueOf(
+                jtl_consultar_produto.getValueAt(
+                jtl_consultar_produto.getSelectedRow(), 0))));
+        liberaBotoes(false, true, true, true, true);
+    }//GEN-LAST:event_jtl_consultar_produtoMouseClicked
+
     
     public void setPosicao(){
         Dimension d = this.getDesktopPane().getSize();
@@ -351,6 +372,54 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
             System.out.println("Erro ao gravar" + e.getMessage());
         }
     }
+    
+    private void preencheTabela (String nome_cli){
+        try{
+            modelo_jtl_consultar_produto.setNumRows(0);
+            
+            clienteDTO.setNome_cli(nome_cli);
+            rs = clienteCTR.consultarProduto(clienteDTO, 1);
+            while(rs.next()){
+                modelo_jtl_consultar_produto.addRow(new Object[]{
+                    rs.getString("id_cli"),
+                    rs.getString("nome_cli"),
+                });
+            }
+        }
+        catch (Exception e){
+            System.out.println("Erro SQL: "+e);
+        }
+        finally{
+            clienteCTR.CloseDB();
+        }
+    }
+    
+    private void preencheCampos(int id_cli){
+        try{
+            clienteDTO.setId_cli(id_cli);
+            rs = clienteCTR.consultarCliente(clienteDTO, 2);
+            if(rs.next()){
+                limpaCampos();
+                
+                nome_cli.setText(rs.getString("nome_cli"));
+                descricao_cli.setText(rs.getString("descricao_cli"));
+                precodevenda_cli.setText(rs.getString("precodevenda_cli"));
+                quantidadeemestoque_cli.setText(rs.getString("quantidadeemestoque_cli"));
+                datadocadastro_cli.setText(rs.getString("datadocadastro_cli"));
+                
+                gravar_alterar = 2;
+                liberaCampos(true);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Erro SQL: "+e);
+        }
+        finally{
+            clienteCTR.CloseDB();
+        }
+    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
