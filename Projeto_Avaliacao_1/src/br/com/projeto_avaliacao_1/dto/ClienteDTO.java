@@ -2,7 +2,7 @@ package br.com.projeto_avaliacao_1.dto;
 
 public class ClienteDTO {
     private String nome_cli, descricao_cli, precodevenda_cli, datadocadastro_cli;
-    private int quantidadeemestoque_cli;
+    private int quantidadeemestoque_cli, id_cli;
 
     public String getNome_cli() {
         return nome_cli;
@@ -42,5 +42,13 @@ public class ClienteDTO {
 
     public void setDatadocadastro_cli(String datadocadastro_cli) {
         this.datadocadastro_cli = datadocadastro_cli;
+    }
+    
+    public int getId_cli() {
+        return id_cli;
+    }
+
+    public void setId_cli(int id_cli) {
+        this.id_cli = id_cli;
     }
 }

@@ -12,7 +12,7 @@ public class ClienteDAO {
     private ResultSet rs = null;
     private Statement stmt = null;
     
-    public boolean inserirCliente(ClienteDTO clienteDTO){
+    public boolean inserirproduto(ClienteDTO clienteDTO){
         try{
             ConexaoDAO.ConnectDB();
             stmt = ConexaoDAO.con.createStatement();
@@ -39,6 +39,47 @@ public class ClienteDAO {
         finally{
             ConexaoDAO.CloseDB();
         }
+    }
+    
+    public ResultSet consultarProduto (ClienteDTO clienteDTO, int opcao) throws SQLException{
+        try{
+            ConexaoDAO.ConnectDB();
+        
+            stmt = ConexaoDAO.con.createStatement();
+        
+         String comando = "";
+        
+         switch (opcao){
+               case 1:
+                   comando = "Select c.* "+
+                            "from cliente c"+
+                             "where nome_cli like '" + clienteDTO.getNome_cli()+ "%' "+
+                             "order by c.nome_cli";
+                break;
+                case 2:
+                   comando = "Select c.* "+
+                          "from cliente c"+
+                          "where c.id_cli = " + clienteDTO.getId_cli();
+                break;
+                case 3:
+                   comando = "Select c.id_cli, c.nome_cli "+
+                          "from cliente c ";
+                break;
+                }
+        
+              rs = stmt.executeQuery(comando.toUpperCase());
+              return rs;
+            }
+            catch (Exception e){
+                System.out.println(e.getMessage());
+                return rs;
+            }
+    }
+    
+    
+    
+    public boolean inserirProduto(ClienteDTO clienteDTO) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
