@@ -107,6 +107,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
             }
         });
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/projeto_avaliacao_1/imagens/novo.png"))); // NOI18N
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +115,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/projeto_avaliacao_1/imagens/salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,11 +123,29 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/projeto_avaliacao_1/imagens/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/projeto_avaliacao_1/imagens/excluir.png"))); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/projeto_avaliacao_1/imagens/sair.png"))); // NOI18N
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Bitstream Charter", 3, 24)); // NOI18N
         jLabel7.setText("Consulta");
@@ -138,7 +158,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
             }
         });
 
-        btnPesquisar.setText("OK");
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/projeto_avaliacao_1/imagens/pesquisar.png"))); // NOI18N
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
@@ -195,30 +215,30 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
                             .addComponent(precodevenda_cli, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(quantidadeemestoque_cli)
+                                    .addGap(1, 1, 1))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(datadocadastro_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(btnNovo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(quantidadeemestoque_cli)
-                                .addGap(1, 1, 1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(btnSalvar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(datadocadastro_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(btnNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSair)))
+                                .addComponent(btnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSair)))))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(207, 207, 207))
                     .addGroup(layout.createSequentialGroup()
@@ -231,7 +251,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
                                 .addComponent(pesquisa_nome_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnPesquisar)))
-                        .addContainerGap(53, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,12 +268,13 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(descricao_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(pesquisa_nome_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(descricao_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
+                        .addComponent(pesquisa_nome_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -276,7 +297,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
                             .addComponent(btnExcluir)
                             .addComponent(btnSair)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -313,6 +334,14 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
             gravar();
             gravar_alterar = 0;
         }
+        else{
+            if (gravar_alterar == 2){
+                alterar();
+                gravar_alterar = 0;
+            }else{
+                JOptionPane.showMessageDialog(null, "Erro no Sistema!!!");
+            }
+        }
         
         limpaCampos();
         liberaCampos(false);
@@ -334,6 +363,26 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         liberaBotoes(false, true, true, true, true);
     }//GEN-LAST:event_jtl_consultar_produtoMouseClicked
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        excluir();
+        limpaCampos();
+        liberaCampos(false);
+        liberaBotoes(true, false, false, false, true);
+        modelo_jtl_consultar_produto.setNumRows(0);
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpaCampos();
+        liberaCampos(false);
+        modelo_jtl_consultar_produto.setNumRows(0);
+        liberaBotoes(true, false, false, false, true);
+        gravar_alterar = 0;
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
     
     public void setPosicao(){
         Dimension d = this.getDesktopPane().getSize();
@@ -348,12 +397,20 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         datadocadastro_cli.setEnabled(a);
     }
     
+    private void limpaCampos(){
+        nome_cli.setText("");
+        descricao_cli.setText("");
+        precodevenda_cli.setText("");
+        quantidadeemestoque_cli.setText("");
+        datadocadastro_cli.setText("");
+}
+    
     private void liberaBotoes(boolean a, boolean b, boolean c, boolean d, boolean e){
         btnNovo.setEnabled(a);
-        btnSalvar.setEnabled(a);
-        btnCancelar.setEnabled(a);
-        btnExcluir.setEnabled(a);
-        btnSair.setEnabled(a);
+        btnSalvar.setEnabled(b);
+        btnCancelar.setEnabled(c);
+        btnExcluir.setEnabled(d);
+        btnSair.setEnabled(e);
     }
 
     private void gravar(){
@@ -397,7 +454,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
     private void preencheCampos(int id_cli){
         try{
             clienteDTO.setId_cli(id_cli);
-            rs = clienteCTR.consultarCliente(clienteDTO, 2);
+            rs = clienteCTR.consultarProduto(clienteDTO, 2);
             if(rs.next()){
                 limpaCampos();
                 
@@ -419,6 +476,31 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         }
     }
     
+    private void alterar(){
+        try{
+            clienteDTO.setNome_cli(nome_cli.getText());
+            clienteDTO.setDescricao_cli(descricao_cli.getText());
+            clienteDTO.setPrecodevenda_cli(precodevenda_cli.getText());
+            clienteDTO.setQuantidadeemestoque_cli(Integer.parseInt(quantidadeemestoque_cli.getText()));
+            clienteDTO.setDatadocadastro_cli(datadocadastro_cli.getText());
+            
+            JOptionPane.showMessageDialog(null,
+                    clienteCTR.alterarProduto(clienteDTO)
+            );
+        }
+        catch (Exception e){
+            System.out.println("Erro ao Alterar" + e.getMessage());
+        }
+    }
+    
+    private void excluir(){
+        if (JOptionPane.showConfirmDialog(null, "Deseja Realmente excluir o produto?","Aviso",
+   JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
+            JOptionPane.showMessageDialog(null,
+                    clienteCTR.excluirProduto(clienteDTO)
+            );
+        }
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -445,8 +527,4 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
     private javax.swing.JTextField precodevenda_cli;
     private javax.swing.JTextField quantidadeemestoque_cli;
     // End of variables declaration//GEN-END:variables
-
-    private void limpaCampos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

@@ -4,6 +4,8 @@
  */
 package br.com.projeto_avaliacao_1.view;
 import javax.swing.JOptionPane;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -16,7 +18,14 @@ public class PrincipalVIEW extends javax.swing.JFrame {
      */
     public PrincipalVIEW() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
+        this.setSize(1200, 600);
+        
+        //Houve algum erro com o codigo de centralização que tive que optar por esse abaixo.
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getSize().width/2, 
+                         dim.height/2 - this.getSize().height/2);
     }
 
     /**
@@ -34,10 +43,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         menuCadastrar = new javax.swing.JMenu();
         itemMenuCliente = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
         menuCadastrar.setMnemonic('f');
         menuCadastrar.setText("Cadastrar");
@@ -56,10 +65,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         menuCadastrar.add(itemMenuCliente);
 
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        menuCadastrar.add(saveMenuItem);
-
         menuBar.add(menuCadastrar);
 
         menuSair.setMnemonic('e');
@@ -72,21 +77,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         menuBar.add(menuSair);
 
         setJMenuBar(menuBar);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,7 +96,23 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+
+    private void sair(){
+        Object[] options = { "Sair", "Cancelar"};
+        if (JOptionPane.showOptionDialog(null, "Deseja Sair do Sistema?", "Informação",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]) == 0){
+            System.exit(0);
+        }
+    }
+    
+    private void abreClienteVIEW(){
+        ClienteVIEW clienteVIEW = new ClienteVIEW();
+        this.desktopPane.add(clienteVIEW);
+        clienteVIEW.setVisible(true);
+        clienteVIEW.setPosicao();
+    }
+    
+     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -137,23 +143,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             }
         });
     }
-
-    private void sair(){
-        Object[] options = { "Sair", "Cancelar"};
-        if (JOptionPane.showOptionDialog(null, "Deseja Sair do Sistema?", "Informação",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]) == 0){
-            System.exit(0);
-        }
-    }
-    
-    private void abreClienteVIEW(){
-        ClienteVIEW clienteVIEW = new ClienteVIEW();
-        this.desktopPane.add(clienteVIEW);
-        clienteVIEW.setVisible(true);
-        clienteVIEW.setPosicao();
-    }
-    
-    
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,7 +151,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenu menuSair;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
+        
 }

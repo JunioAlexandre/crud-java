@@ -24,7 +24,7 @@ public class ClienteCTR {
         }
         catch (Exception e){
             System.out.println(e.getMessage());
-            return "Produto não cadastradoã";
+            return "Produto não cadastrado";
         }
     }
     
@@ -35,6 +35,34 @@ public class ClienteCTR {
         rs = clienteDAO.consultarProduto(clienteDTO, opcao);
         
         return rs;
+    }
+    
+    public String alterarProduto (ClienteDTO clienteDTO){
+        try{
+            if (clienteDAO.alterarProduto(clienteDTO)){
+                return "produto Alterado com Sucesso!!!";
+            }else{
+                return "produto NÃO Alterado!!!";
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return "produto NÂO Alterado!!!";
+        }
+    }
+    
+    public String excluirProduto (ClienteDTO clienteDTO){
+        try{
+            if (clienteDAO.excluirProduto(clienteDTO)){
+                return "Produto Excluido com sucesso!!!";
+            }else{
+                return "produto NÂO Excluido!!!";
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return "Produto NÂO Excluido!!!";
+        }
     }
     
     public void CloseDB(){

@@ -11,7 +11,7 @@ public class ConexaoDAO {
     
     public static void ConnectDB(){
         try{
-            String dsn = "projeto_avaliacao_1";
+            String dsn = "avaliacao_1";
             String user = "postgres";
             String senha = "postdba";
             

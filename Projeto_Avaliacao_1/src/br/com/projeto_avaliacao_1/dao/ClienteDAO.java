@@ -12,16 +12,16 @@ public class ClienteDAO {
     private ResultSet rs = null;
     private Statement stmt = null;
     
-    public boolean inserirproduto(ClienteDTO clienteDTO){
+    public boolean inserirProduto(ClienteDTO clienteDTO){
         try{
             ConexaoDAO.ConnectDB();
             stmt = ConexaoDAO.con.createStatement();
             
             String comando = "Insert into cliente (nome_cli, descricao_cli, "
-                    + "precodevenda_cli, quantidadeemestoque_cli, datadocadastro_cli) value ( "
+                    + "precodevenda_cli, quantidadeemestoque_cli, datadocadastro_cli) values ( "
                     + "'" + clienteDTO.getNome_cli() + "', "
                     + "'" + clienteDTO.getDescricao_cli() + "', "
-                    + "'" + clienteDTO.getPrecodevenda_cli() + ", "
+                    + "'" + clienteDTO.getPrecodevenda_cli() + "', "
                     + clienteDTO.getQuantidadeemestoque_cli() + ", "
                     + "'" + clienteDTO.getDatadocadastro_cli() + "') ";
             
@@ -52,13 +52,13 @@ public class ClienteDAO {
          switch (opcao){
                case 1:
                    comando = "Select c.* "+
-                            "from cliente c"+
+                            "from cliente c "+
                              "where nome_cli like '" + clienteDTO.getNome_cli()+ "%' "+
                              "order by c.nome_cli";
                 break;
                 case 2:
                    comando = "Select c.* "+
-                          "from cliente c"+
+                          "from cliente c "+
                           "where c.id_cli = " + clienteDTO.getId_cli();
                 break;
                 case 3:
@@ -76,7 +76,7 @@ public class ClienteDAO {
             }
     }
     
-    public boolean alterarCliente(ClienteDTO clienteDTO) throws SQLException{
+    public boolean alterarProduto(ClienteDTO clienteDTO) throws SQLException{
         try{
             ConexaoDAO.ConnectDB();
             
@@ -87,7 +87,8 @@ public class ClienteDAO {
                     + "descricao_cli = '" + clienteDTO.getDescricao_cli()+ "', "
                     + "precodevenda_cli = '" + clienteDTO.getPrecodevenda_cli()+ "', "
                     + "quantidadeemestoque_cli = '" + clienteDTO.getQuantidadeemestoque_cli()+ "', "
-                    + "datadocadastro_cli = '" + clienteDTO.getDatadocadastro_cli();
+                    + "datadocadastro_cli = '" + clienteDTO.getDatadocadastro_cli()+ "' "
+                    + "WHERE id_cli = " + clienteDTO.getId_cli();
             
             stmt.execute(comando.toUpperCase());
             
@@ -97,13 +98,36 @@ public class ClienteDAO {
             return true;     
         }
         catch (Exception e){
-            System.out.println(e.getMessahe()); //Arrumar isso aqui... dar continuidade...
-            
+            System.out.println(e.getMessage());
+            return false;
+        }
+        finally {
+            ConexaoDAO.CloseDB();
         }
     }
     
-    public boolean inserirProduto(ClienteDTO clienteDTO) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean excluirProduto(ClienteDTO clienteDTO){
+        try{
+            ConexaoDAO.ConnectDB();
+            
+            stmt = ConexaoDAO.con.createStatement();
+            
+            String comando = "Delete from produto where id_cli = "
+                              + clienteDTO.getId_cli();
+            
+            stmt.execute(comando);
+            
+            ConexaoDAO.con.commit();
+            
+            stmt.close();
+            return true;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        finally{
+            ConexaoDAO.CloseDB();
+        }
     }
-    
 }
